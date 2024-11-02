@@ -12,9 +12,9 @@ ENV username atakdev
 ENV cmake_release_version cmake-3.26.0-linux-x86_64
 ENV cmake_release_link https://cmake.org/files/v3.26/${cmake_release_version}.tar.gz
 
-ENV ndk_release_version android-ndk-r25b-linux.zip
+ENV ndk_release_version android-ndk-r12b-linux-x86_64.zip
 ENV ndk_release_dl_link https://dl.google.com/android/repository/${ndk_release_version}
-ENV ndk_release_folder android-ndk-r25b
+ENV ndk_release_folder android-ndk-r12b
 
 # keep an older version of commandlinetools due to Java version issues
 # Current version is : commandlinetools-linux-10406996_latest.zip
@@ -23,8 +23,8 @@ ENV sdk_release_version commandlinetools-linux-9477386_latest.zip
 ENV sdk_manager_build_tools "build-tools;30.0.2"
 ENV sdk_manager_platforms "platforms;android-30"
 
-ENV atak_release_version ATAK-CIV-5.0.0.18-SDK.zip
-ENV atak_extract_foldername ATAK-CIV-5.0.0.18-SDK
+ENV atak_release_version atak-civ-sdk-4.6.0.5.zip
+ENV atak_extract_foldername atak-civ
 
 # Set root for installation and configuration ------------------------------- #
 # --- ---- --- ------------ --- ------------- ------------------------------- # 
@@ -109,7 +109,7 @@ RUN ./sdkmanager --sdk_root="/home/${username}/Android/sdk" ${sdk_manager_build_
 WORKDIR /home/${username}
 COPY --chown=${username}:root ${atak_release_version} ./
 RUN unzip ${atak_release_version}
-RUN mv ${atak_extract_foldername} atak-civ
+#RUN mv ${atak_extract_foldername} atak-civ
 RUN rm ${atak_release_version}
 
 # https://tak.gov/products/atak-civ ----------------------------------------- #
